@@ -106,19 +106,19 @@ for num, item, tamanho in items:
     #check for replenishment
     if(repor_tecido[0] == True and repor_tecido[1] == dia) :
         tecido+=quantidade_eco_encomenda
-        repor_tecido[0] = (False,0)
+        repor_tecido = (False,0)
 
     if(repor_algodao[0] == True and repor_algodao[1] == dia) :
         algodao+=quantidade_eco_encomenda 
-        repor_algodao[0] = (False,0)
+        repor_algodao = (False,0)
 
     if(repor_fio[0] == True and repor_fio[1] == dia) :
         fio+=quantidade_eco_encomenda  
-        repor_fio[0] = (False,0)
+        repor_fio = (False,0)
 
     if(repor_poliester[0] == True and repor_poliester[1] == dia) :
         poliester+=quantidade_eco_encomenda
-        repor_poliester[0] = (False,0)
+        repor_poliester = (False,0)
 
     #atualizar o stock
     tecido -= tecido_encomenda
@@ -128,22 +128,28 @@ for num, item, tamanho in items:
 
     #Lista de compras no dia
     compras = [] 
+    total = 0
     if (repor_tecido[0] == False and tecido <= ponto_encomenda):
         repor_tecido = (True, dia + 7)
-        compras.append(['Tecido', '7,00',str(quantidade_eco_encomenda),str(quantidade_eco_encomenda*7.00)])
+        compras.append(['Tecido', '7,00', f"{int(round(quantidade_eco_encomenda)):02}", f"{round(quantidade_eco_encomenda * 7.00, 2):.2f}"])
+        total += quantidade_eco_encomenda * 7.00
 
     if (repor_algodao[0] == False and algodao <= ponto_encomenda):
         repor_algodao = (True, dia + 7)
-        compras.append(['Algodão', '5,50',str(quantidade_eco_encomenda),str(quantidade_eco_encomenda*5.50)])
+        compras.append(['Algodão', '5,50', f"{int(round(quantidade_eco_encomenda)):02}", f"{round(quantidade_eco_encomenda * 5.50, 2):.2f}"])
+        total += quantidade_eco_encomenda * 5.50
 
     if (repor_fio[0] == False and fio <= ponto_encomenda):
         repor_fio = (True, dia + 7)
-        compras.append(['Fio', '4,50',str(quantidade_eco_encomenda),str(quantidade_eco_encomenda*4.50)])
-        
+        compras.append(['Fio', '4,50', f"{int(round(quantidade_eco_encomenda)):02}", f"{round(quantidade_eco_encomenda * 4.50, 2):.2f}"])
+        total += quantidade_eco_encomenda * 4.50
+
     if (repor_poliester[0] == False and poliester <= ponto_encomenda):
         repor_poliester = (True, dia + 7)
-        compras.append(['Poliéster', '10,00',str(quantidade_eco_encomenda),str(quantidade_eco_encomenda*10.00)])
-
+        compras.append(['Poliéster', '10,00', f"{int(round(quantidade_eco_encomenda)):02}", f"{round(quantidade_eco_encomenda * 10.00, 2):.2f}"])
+        total += quantidade_eco_encomenda * 10.00
     if compras:
+        encomenda += 1
         for compra in compras:
             print(f"Artigo: {compra[0]}, Preço: {compra[1]}, Quantidade: {compra[2]}, Subtotal: {compra[3]}")
+        print(f"Encomenda : {encomenda}, Total: {round(quantidade_eco_encomenda * 10.00, 2):.2f}")
