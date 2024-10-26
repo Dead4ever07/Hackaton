@@ -1,5 +1,6 @@
 import re
 import math
+import pdf
 from datetime import datetime, timedelta
 
 # Definições de custo e parâmetros
@@ -155,5 +156,6 @@ for num, type, tamanho in items:
         for compra in compras:
             print(f"Artigo: {compra[0]}, Preço: {compra[1]}, Quantidade: {compra[2]}, Subtotal: {compra[3]}")
         print(f"Dia: {dia_atual.strftime('%Y-%m-%d')} Encomenda: {encomenda}, Total: {total:.2f}")
-        pdf.create_pdf(str(encomenda),"date", compras, str(round(quantidade_eco_encomenda * 10.00, 2)))
+        pdf.create_pdf(str(encomenda),dia_atual.strftime('%Y-%m-%d'), compras, str(round(total, 2)))
     dia_atual = proximo_dia(dia_atual)
+
