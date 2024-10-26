@@ -1,4 +1,5 @@
 import re
+import pdf
 
 with open('encomenda3.txt', 'r') as file:
     lines = file.readlines()
@@ -32,3 +33,6 @@ for line in lines:
 
 for num, item, tamanho in items:
     print(f'Num: {num}, Item: {item}, Tamanho: {tamanho}')
+
+
+
