@@ -144,4 +144,6 @@ for num, item, tamanho in items:
         repor_poliester = (True, dia + 7)
         compras.append(['Poliéster', '10,00',str(quantidade_eco_encomenda),str(quantidade_eco_encomenda*10.00)])
 
-pdf.create_pdf(str(2),"2024-05-01",compras)
+    if compras:
+        for compra in compras:
+            print(f"Artigo: {compra[0]}, Preço: {compra[1]}, Quantidade: {compra[2]}, Subtotal: {compra[3]}")
