@@ -1,6 +1,6 @@
 
 
-def create_pdf(Number, date, products):
+def create_pdf(Number, date, products,total):
     from reportlab.lib.pagesizes import A4
     from reportlab.lib import colors
     from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, Image, Flowable
@@ -236,7 +236,7 @@ def create_pdf(Number, date, products):
 
     # Total Section
     total_section = [
-    ["Total:", "€100"]
+    ["Total:", total]
     ]
     total_table = Table(total_section, colWidths=[13 * cm, 3 * cm])
     total_table.setStyle(TableStyle([
@@ -324,4 +324,4 @@ def create_pdf(Number, date, products):
     # Build PDF
     document.build(elements)
 
-create_pdf("test","teste",[ ["SciTeCh'24", "50", "2", "100"], ["SciTeCh'24", "50", "2", "100"], ["SciTeCh'24", "50", "2", "100"]])
+create_pdf("test","teste",[ ["SciTeCh'24", "50", "2", "100"], ["SciTeCh'24", "50", "2", "100"], ["SciTeCh'24", "50", "2", "100"]],100)
