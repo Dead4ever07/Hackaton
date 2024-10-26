@@ -161,5 +161,4 @@ for num, type, tamanho in items:
             print(f"Artigo: {compra[0]}, Preço: {compra[1]}, Quantidade: {compra[2]}, Subtotal: {compra[3]}")
         pdf.create_pdf(str(encomenda),dia_atual.strftime('%d/%m/%Y'), compras, str(round(total, 2)))
     dia_atual = proximo_dia(dia_atual)
-    funcao(tecido,algodao,fio,poliester,dia_atual.strftime('%d/%m/%Y'))
 
