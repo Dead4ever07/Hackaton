@@ -122,6 +122,8 @@ for num, type, tamanho in items:
     if(repor_poliester[0] == True and repor_poliester[1] == dia) :
         poliester+=quantidade_eco_encomenda
         repor_poliester = (False,0)
+    
+    funcao(tecido,algodao,fio,poliester,dia_atual.strftime('%d/%m/%Y'))
 
     #atualiza o stock
     tecido -= tecido_encomenda
@@ -129,6 +131,8 @@ for num, type, tamanho in items:
     fio -= fio_encomenda
     poliester -= poliester_encomenda
 
+    funcao(tecido,algodao,fio,poliester,dia_atual.strftime('%d/%m/%Y'))
+    
     #Lista de compras no dia
     compras = [] 
     total = 0
@@ -155,7 +159,7 @@ for num, type, tamanho in items:
         encomenda += 1
         for compra in compras:
             print(f"Artigo: {compra[0]}, Preço: {compra[1]}, Quantidade: {compra[2]}, Subtotal: {compra[3]}")
-        print(f"Dia: {dia_atual.strftime('%Y-%m-%d')} Encomenda: {encomenda}, Total: {total:.2f}")
-        pdf.create_pdf(str(encomenda),dia_atual.strftime('%Y-%m-%d'), compras, str(round(total, 2)))
+        pdf.create_pdf(str(encomenda),dia_atual.strftime('%d/%m/%Y'), compras, str(round(total, 2)))
     dia_atual = proximo_dia(dia_atual)
+    funcao(tecido,algodao,fio,poliester,dia_atual.strftime('%d/%m/%Y'))
 
