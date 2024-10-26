@@ -18,13 +18,7 @@ def create_pdf(Number, date, products,total):
     pdfmetrics.registerFont(TTFont('CustomFont', font_path))
 
     # Set up document
-    pdf_path = "nota_de_encomenda.pdf"
-    document = SimpleDocTemplate(pdf_path, pagesize=A4)
-    elements = []
-
-
-    # Set up document
-    pdf_path = "nota_de_encomenda_with_image_header.pdf"
+    pdf_path = f"nota_de_encomenda_{date}.pdf"
     document = SimpleDocTemplate(pdf_path, pagesize=A4)
     elements = []
 
@@ -233,7 +227,6 @@ def create_pdf(Number, date, products,total):
     ]))
     elements.append(item_table)
     elements.append(Spacer(1, 0.5 * cm))
-
     # Total Section
     total_section = [
     ["Total:", total]
@@ -280,7 +273,7 @@ def create_pdf(Number, date, products,total):
     Paragraph("", text_style)        # "hi" for the third column
     ],
     [
-    Paragraph("Transferência Bancária", text_style),
+    Paragraph("Transferência Bancária", centered_text_style),
     Paragraph("", box_style),          # Empty cell for the second column
     Paragraph("", text_style)        # "hi" for the third column
     ],
@@ -295,7 +288,7 @@ def create_pdf(Number, date, products,total):
     Paragraph("<u>Overflowers</u>", underlined_style)        # "hi" for the third column
     ],
     [
-    Paragraph("Sujeita a confirmação e disponibilidade de stock.", text_style),
+    Paragraph("Sujeita a confirmação e disponibilidade de stock.", centered_text_style),
     Paragraph("", box_style),          # Empty cell for the second column
     Paragraph("", underlined_style)        # "hi" for the third column
     ]
@@ -322,6 +315,5 @@ def create_pdf(Number, date, products,total):
 
 
     # Build PDF
+    
     document.build(elements)
-
-create_pdf("test","teste",[ ["SciTeCh'24", "50", "2", "100"], ["SciTeCh'24", "50", "2", "100"], ["SciTeCh'24", "50", "2", "100"]],100)
