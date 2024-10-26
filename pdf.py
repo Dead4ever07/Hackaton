@@ -189,7 +189,7 @@ def create_pdf(Number, date, products):
 
     # Create content for the right column (order details)
     right_column_content = [
-    Paragraph("Encomenda Nº:", bold_style),
+    Paragraph("Encomenda Nº:", centered_bold_style),
     Paragraph(Number, centered_text_style),
     Paragraph("Data:", centered_bold_style),
     Paragraph(date, centered_text_style)
@@ -225,7 +225,7 @@ def create_pdf(Number, date, products):
     ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
     ('FONTNAME', (0, 0), (-1, -1), 'Helvetica-Bold'),
     ('FONTSIZE', (0, 0), (-1, 0), 16),
-    ('FONTSIZE', (0, 1), (-1, 1), 13),
+    ('FONTSIZE', (0, 1), (-1, -1), 13),
     ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
     ('BACKGROUND', (0, 1), (-1, -1), HexColor("#f7f8f2")),
     ('BOTTOMPADDING', (0, 1), (-1, -1), 15),
@@ -308,10 +308,10 @@ def create_pdf(Number, date, products):
 
     # Set the style for the footer table
     footer_table.setStyle(TableStyle([
-    ('BACKGROUND', (0, 0), (0, 0), HexColor("#b91200")),   # First line background red
+    ('BACKGROUND', (0, 0), (0, 0), HexColor("#ca4c3f")),   # First line background red
     ('BACKGROUND', (0, 1), (0, 1), colors.white),  # Second line background white
     ('BACKGROUND', (0, 2), (0, 2), colors.white),  # Third line background white
-    ('BACKGROUND', (0, 3), (0, 3), HexColor("#b91200")),    # Fourth line background red
+    ('BACKGROUND', (0, 3), (0, 3), HexColor("#ca4c3f")),    # Fourth line background red
     ('BACKGROUND', (0, 4), (0, 4), colors.white),  # Fifth line background whit
     ('ALIGN', (0, 0), (-1, -1), 'CENTER'),  # Center align all contents
     ('FONTNAME', (0, 0), (-1, -1), 'Helvetica-Bold'),  # Set font for all cells
@@ -324,3 +324,4 @@ def create_pdf(Number, date, products):
     # Build PDF
     document.build(elements)
 
+create_pdf("test","teste",[ ["SciTeCh'24", "50", "2", "100"], ["SciTeCh'24", "50", "2", "100"], ["SciTeCh'24", "50", "2", "100"]])
